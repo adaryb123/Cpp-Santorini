@@ -32,6 +32,11 @@ int main()
         std::cout << testMoves[i] << "\n";
     }
 
+    std::cout<< "executing move " << testMoves[testMoves.size()-1] << "\n";
+    update_board_after_move(testBoard,testMoves[testMoves.size()-1]);
+
+    std::cout << testBoard;
+
     // Move testMove {2,2,3,3,2,3};
     // std::cout << testMove;
 
