@@ -9,10 +9,10 @@
 
 int main()
 {
-    printf("kek\n");
+    // printf("kek\n");
 
-    GameBoard gb{};
-    std::cout << gb << "\n";
+    // GameBoard gb{};
+    // std::cout << gb << "\n";
 
     GameBoard testBoard{};
     testBoard.game_board[0][1].layer=3;
