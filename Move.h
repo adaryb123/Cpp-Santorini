@@ -5,6 +5,8 @@
 class Move final
 {
 public: 
+    Move(){};
+
     Move(int a, int b, int c, int d, int e, int f){
         row_from = a;
         col_from = b;
@@ -26,8 +28,8 @@ public:
 
 std::ostream& operator<<(std::ostream& lhs, const Move& rhs)
 {
-    lhs << "MOVE [" << rhs.row_from+1 << "][" << rhs.col_from+1 << "]->[" << rhs.row_to+1 << "][" << rhs.col_to+1
-        << "] build: [" << rhs.row_build+1 << "][" << rhs.col_build+1 <<"]\n";
+    lhs << "MOVE [" << rhs.row_from+1 << "][" << static_cast<char>('A' + rhs.col_from) << "]->[" << rhs.row_to+1 << "][" << static_cast<char>('A' + rhs.col_to)
+        << "] build: [" << rhs.row_build+1 << "][" << static_cast<char>('A' + rhs.col_build) <<"]\n";
 
     return lhs;
 }

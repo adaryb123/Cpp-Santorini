@@ -248,15 +248,21 @@ void get_available_moves(const std::vector<std::vector<Tile>> game_board, const 
 }
 
 
-void update_board_after_move(GameBoard& game_board, const Move move){
+void update_board_after_move(GameBoard& game_board, const Move move, int& winner){
     std::vector<std::vector<Tile>>  actual_board = game_board.game_board;
     if (actual_board[move.row_from][move.col_from].black_present){
         actual_board[move.row_from][move.col_from].black_present = false;
         actual_board[move.row_to][move.col_to].black_present = true;
+
+        if (actual_board[move.row_to][move.col_to].layer == 3)
+            winner = -1;
     }
     else if (actual_board[move.row_from][move.col_from].white_present){
         actual_board[move.row_from][move.col_from].white_present = false;
         actual_board[move.row_to][move.col_to].white_present = true;
+
+        if (actual_board[move.row_to][move.col_to].layer == 3)
+            winner = 1;
     }
 
     if (actual_board[move.row_build][move.col_build].layer == 3)
@@ -265,4 +271,5 @@ void update_board_after_move(GameBoard& game_board, const Move move){
         actual_board[move.row_build][move.col_build].layer++;
 
     game_board.game_board = actual_board;
+
 }
