@@ -4,7 +4,7 @@
 
 #include "GameEngine.h"
 
-#include "RandomBot.h"
+#include "MinmaxBot.h"
 
 bool ask_user_to_continue(){
     std::string user_input;
@@ -26,7 +26,13 @@ void main_loop(){
             std::cout << "black has no moves, white won!\n";
             break;
         }
-        pick_move(board,black_moves, selected_move);
+        std::cout << "Available black moves: \n";
+        for (size_t i = 0 ; i < black_moves.size() ; i++){
+            std::cout << black_moves[i];
+        }
+        pick_move(board,black_moves, selected_move,'b');
+        std::cout << "chosen move: " << selected_move;
+
         update_board_after_move(board,selected_move,end);
         std::cout << "black picked move " << selected_move << '\n' << board << "\n";
         if (end == -1){
@@ -43,7 +49,7 @@ void main_loop(){
             std::cout << "white has no moves, black won!\n";
             break;
         }
-        pick_move(board,white_moves, selected_move);
+        pick_move(board,white_moves, selected_move,'w');
         update_board_after_move(board,selected_move,end);
         std::cout << "white picked move " << selected_move << '\n' << board << "\n";
         if (end == 1){
@@ -52,4 +58,5 @@ void main_loop(){
         }
         if (!ask_user_to_continue())
             break;
+    }
 }
