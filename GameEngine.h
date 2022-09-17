@@ -83,7 +83,7 @@ void get_possible_builds(const int row, const int col, const std::vector<std::ve
         builds.push_back({row+1,col+1});
 
     if (is_valid_build(row,col-1,game_board))
-        builds.push_back({row-1,col-1});
+        builds.push_back({row,col-1});
 
     if (is_valid_build(row,col+1,game_board))
         builds.push_back({row,col+1});

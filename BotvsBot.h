@@ -26,10 +26,10 @@ void main_loop(){
             std::cout << "black has no moves, white won!\n";
             break;
         }
-        std::cout << "Available black moves: \n";
-        for (size_t i = 0 ; i < black_moves.size() ; i++){
-            std::cout << black_moves[i];
-        }
+        // std::cout << "Available black moves: \n";
+        // for (size_t i = 0 ; i < black_moves.size() ; i++){
+        //     std::cout << black_moves[i];
+        // }
         pick_move(board,black_moves, selected_move,'b');
         std::cout << "chosen move: " << selected_move;
 
