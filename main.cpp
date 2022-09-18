@@ -2,6 +2,8 @@
 
 #include "Engine.h"
 
+#include "Minmax.h"
+
 void pick_move(const GameBoard game_board, const std::vector<Move> moves, Move& chosenMove){
     srand(time(0));
     int move_index = 0 + rand() % moves.size();
@@ -18,10 +20,11 @@ bool ask_user_to_continue(){
 
 int main()
 {
+    std::cout << "SHREK\n";
     GameBoard game_board;
     std::vector<Move> black_moves, white_moves;
     Move selected_move;
-    int end = 0;
+    int end = 0, garbage;
     setup_board(game_board);
     std::cout << "Starting board:\n" << game_board;
     while(true){
@@ -35,7 +38,8 @@ int main()
         // for (size_t i = 0 ; i < black_moves.size() ; i++){
         //     std::cout << black_moves[i];
         // }
-        pick_move(game_board,black_moves, selected_move);
+        // pick_move(game_board,black_moves, selected_move);
+        std::tie(garbage, selected_move) = maxi(3,game_board,black_moves,'b');
         // std::cout << "chosen move: " << selected_move;
 
         update_board_after_move(game_board,selected_move,end);
@@ -54,7 +58,8 @@ int main()
             std::cout << "white has no moves, black won!\n";
             break;
         }
-        pick_move(game_board,white_moves, selected_move);
+        std::tie(garbage, selected_move) = mini(3,game_board,white_moves,'w');
+        // pick_move(game_board,white_moves, selected_move);
         update_board_after_move(game_board,selected_move,end);
         std::cout << "white picked move " << selected_move << '\n' << game_board << "\n";
         if (end == 1){

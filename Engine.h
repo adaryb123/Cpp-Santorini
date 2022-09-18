@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Libraries.h"
 
 typedef struct Tile {
@@ -22,7 +24,7 @@ typedef struct PlayerPosition{
     int row;
     int col;
     int level;
-} playerPosition;
+} PlayerPosition;
 
 std::ostream& operator<<(std::ostream& lhs, const Tile& rhs)
 {
